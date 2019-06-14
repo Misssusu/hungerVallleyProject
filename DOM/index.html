@@ -13,12 +13,14 @@
     </ul>
 </body>
 <script>
-    //parentnNode.removeChild()
-    //参数：一个子节点(要移除的节点)
-    //返回值：移除的子节点
-    //注意：该方法是在移除节点的父节点上调用的
+    //node.replaceChild()
+    //参数1：用来替换的新节点
+    //参数2：要替换走的子节点
+    //返回值：替换走的子节点
+    //注意：被替换掉的节点会存在于内存中
     var ul = document.getElementsByTagName('ul')[0];
     var li = document.getElementsByTagName('li')[0];
-    ul.removeChild(li)
+    var text = document.createTextNode('abc');
+    ul.replaceChild(text,li)
 </script>
 </html>
