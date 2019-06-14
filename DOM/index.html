@@ -10,14 +10,12 @@
     <ul> </ul>
 </body>
 <script>
-    //判断一个节点有没有子节点的方法，其中3种
-    //1.hasChildNodes()当前节点是否有子节点(所有类型的节点)
+    //node.childNodes属性
+    //返回一个类似数组的对象，是一个动态集合
     var ul = document.getElementsByTagName('ul')[0];
-    console.log(ul.hasChildNodes())   //true
-    //2.node.firstChild !== null
-    console.log(ul.firstChild)   //" "
-    //3.node.childNodes && node.childNodes.length > 0
     console.log(ul.childNodes)   //NodeList[text]
-    console.log(ul.childNodes.length)   //1
+    var text = document.createTextNode('abc');
+    ul.appendChild(text);
+    console.log(ul.childNodes)   //NodeList[text,text]
 </script>
 </html>
