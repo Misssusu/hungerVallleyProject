@@ -7,15 +7,19 @@
     <title>test</title>
 </head>
 <body>
-    <ul> </ul>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
 </body>
 <script>
-    //node.childNodes属性
-    //返回一个类似数组的对象，是一个动态集合
+    //node.insertBefore()
+    //将某个节点插入父节点内部的指定位置
+    //参数1：所要插入的节点
+    //参数2：父节点内部的一个子节点
     var ul = document.getElementsByTagName('ul')[0];
-    console.log(ul.childNodes)   //NodeList[text]
+    var li = document.getElementsByTagName('li')[0];
     var text = document.createTextNode('abc');
-    ul.appendChild(text);
-    console.log(ul.childNodes)   //NodeList[text,text]
+    ul.insertBefore(text,li);   //将abc插入到1的前面
 </script>
 </html>
