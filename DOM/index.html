@@ -16,8 +16,13 @@
 </ul>
 </body>
 <script>
-    var frag = document.createDocumentFragment();
-    var li = document.getElementsByTagName('li')[0];
-    frag.appendChild(li);
+    //cloneNode(deep)
+    //参数deep表示是否采用深度克隆，如果为true，则该节点的所有后代节点也都会被克隆，如果为false，则只克隆节点本身
+    var ul = document.getElementsByTagName('ul')[0];
+    console.log(ul)
+    var newNode = ul.cloneNode();
+    console.log(newNode);
+    var deepNode = ul.cloneNode(true);
+    console.log(deepNode)
 </script>
 </html>
