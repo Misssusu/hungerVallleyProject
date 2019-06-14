@@ -7,20 +7,18 @@
     <title>test</title>
 </head>
 <body>
-    <ul>
-        <li>1</li>
-        <li>2</li>
-    </ul>
+    <ul></ul>
 </body>
 <script>
-    //node.replaceChild()
-    //参数1：用来替换的新节点
-    //参数2：要替换走的子节点
-    //返回值：替换走的子节点
-    //注意：被替换掉的节点会存在于内存中
+    //node.normalize()
+    //清理当前节点内部的所有文本节点
+    //1.去除空的文本节点
+    //2.将毗邻的文本节点合并成一个
     var ul = document.getElementsByTagName('ul')[0];
-    var li = document.getElementsByTagName('li')[0];
-    var text = document.createTextNode('abc');
-    ul.replaceChild(text,li)
+    var text1 = document.createTextNode('abc');
+    ul.appendChild(text1);
+    var text2 = document.createTextNode('def');
+    ul.appendChild(text2);
+    ul.normalize();
 </script>
 </html>
