@@ -11,15 +11,20 @@
         <li>1</li>
         <li>2</li>
     </ul>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
 </body>
 <script>
-    //node.insertBefore()
-    //将某个节点插入父节点内部的指定位置
-    //参数1：所要插入的节点
-    //参数2：父节点内部的一个子节点
-    var ul = document.getElementsByTagName('ul')[0];
-    var li = document.getElementsByTagName('li')[0];
-    var text = document.createTextNode('abc');
-    ul.insertBefore(text,li);   //将abc插入到1的前面
+    //node.isEqualNode()与node.isSameNode()
+    //isEqualNode()检查两个节点是否相等
+    //isSamenNode()检查两个节点是否是同一个节点
+    var ul1 = document.getElementsByTagName('ul')[0];
+    var ul2 = document.getElementsByTagName('ul')[1];
+    var result = ul1.isEqualNode(ul2);
+    console.log(result)   //true
+    var result1 = ul1.isSameNode(ul2);
+    console.log(result1)   //false
 </script>
 </html>
