@@ -11,20 +11,14 @@
         <li>1</li>
         <li>2</li>
     </ul>
-    <ul>
-        <li>1</li>
-        <li>2</li>
-    </ul>
 </body>
 <script>
-    //node.isEqualNode()与node.isSameNode()
-    //isEqualNode()检查两个节点是否相等
-    //isSamenNode()检查两个节点是否是同一个节点
-    var ul1 = document.getElementsByTagName('ul')[0];
-    var ul2 = document.getElementsByTagName('ul')[1];
-    var result = ul1.isEqualNode(ul2);
-    console.log(result)   //true
-    var result1 = ul1.isSameNode(ul2);
-    console.log(result1)   //false
+    //parentnNode.removeChild()
+    //参数：一个子节点(要移除的节点)
+    //返回值：移除的子节点
+    //注意：该方法是在移除节点的父节点上调用的
+    var ul = document.getElementsByTagName('ul')[0];
+    var li = document.getElementsByTagName('li')[0];
+    ul.removeChild(li)
 </script>
 </html>
