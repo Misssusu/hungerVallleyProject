@@ -7,18 +7,21 @@
     <title>test</title>
 </head>
 <body>
-    <ul></ul>
+    <a href=""></a><ul></ul>
+    <div>test</div>
 </body>
 <script>
-    //node.normalize()
-    //清理当前节点内部的所有文本节点
-    //1.去除空的文本节点
-    //2.将毗邻的文本节点合并成一个
+    //node.nextSibling
+    //返回紧跟在当前节点后面的第一个同级节点
+    //如果没有同级节点返回null
+
+    //node.previousSibling
+    //返回当前节点前面的，距离最近的一个同级节点
+    //如果没有同级节点返回null
+
+    //相同点：会包括文本节点和注释节点
     var ul = document.getElementsByTagName('ul')[0];
-    var text1 = document.createTextNode('abc');
-    ul.appendChild(text1);
-    var text2 = document.createTextNode('def');
-    ul.appendChild(text2);
-    ul.normalize();
+    console.log(ul.nextSibling)   //#test(回车)
+    console.log(ul.previousSibling)   //<a href=""></a>
 </script>
 </html>
