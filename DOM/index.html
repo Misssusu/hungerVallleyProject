@@ -7,21 +7,31 @@
     <title>test</title>
 </head>
 <body>
-    <a href=""></a><ul></ul>
-    <div>test</div>
+    <ul>
+        123
+        <li>1</li>
+        <li style="display:none">2</li>
+    </ul>
 </body>
 <script>
-    //node.nextSibling
-    //返回紧跟在当前节点后面的第一个同级节点
-    //如果没有同级节点返回null
+    //node.innerText
+    //返回文本节点
 
-    //node.previousSibling
-    //返回当前节点前面的，距离最近的一个同级节点
-    //如果没有同级节点返回null
+    //node.textContent
+    //返回文本节点
+
+    //node.innerHTML
+    //属性设置或获取HTML语法表示的元素的后代，返回的是HTML文本
 
     //相同点：会包括文本节点和注释节点
+    //区别：
+    //1.textContent会获取所有元素的内容，包括<script>和<style>元素，而innerText不会
+    //2.innerText会意识到样式，并且不会返回隐藏元素的文本，而textContent会
+    //3.innerText受css样式的影响会发生重拍，而textContent不会
+    //4.innerText对IE兼容性比较好，兼容IE6+，textContent兼容IE9+
     var ul = document.getElementsByTagName('ul')[0];
-    console.log(ul.nextSibling)   //#test(回车)
-    console.log(ul.previousSibling)   //<a href=""></a>
+    console.log(ul.innerText)   //123 1
+    console.log(ul.textContent)   //123 1 2
+    console.log(ul.innerHTML)   //123 <li>1</li><li style="display:none">2</li>
 </script>
 </html>
