@@ -5,84 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>test</title>
-    <style></style>
 </head>
 <body>
     <ul>
-        123
-        <li>1</li>
-        <li style="display:none">2</li>
-        <img src="" alt="">
-        <a ></a>
+        <li class="li1"></li>
     </ul>
-    <img src="" alt="">
-    <a href=""></a>
+    <div id="a">a</div>
+    <div class="div1">1</div>
+    <div class="div1">2</div>
+    <form action="" name = 'x'></form>
 </body>
 <script>
-    //document.characterSet
-    //返回当前文档的编码
-    console.log(document.characterSet)   //UTF-8
+    //document.createElement()
+    //生成元素节点并返回该节点
+    var ul = document.getElementsByTagName('ul')[0];
+    var li = document.createElement('li');
+    ul.appendChild(li)
 
-    //document.domain
-    //返回当前文档的域名，不包括协议和端口
-    console.log(document.domain)   //localhost
+    //document.createTextNode()
+    //生成文本节点并返回该节点
+    ul.appendChild(document.createTextNode('<span>hello</span>'))
 
-    //document.images
-    //获取页面所有<img>图片节点
-    console.log(document.images)   //[img img]
+    //document.getElementById()
+    //返回指定id属性的元素节点
+    //参数是元素的id属性，只能在document对象上调用
+    var elem = document.getElementById('a');
+    console.log(elem)
 
-    //document.links
-    //返回当前文档所有设定了href属性的<a>及<area>
-    console.log(document.links)   //[a]
+    //document.getElementsByClassName()
+    //返回一个类似数组的对象(HTMLCollection实例)，包含了所有class名字符合指定条件的元素
+    //返回的结果是动态的
+    //可以在任何元素节点上调用
+    console.log(document.getElementsByClassName('div1').length);   //1
+    var div2 = document.createElement('div');
+    div2.className = 'div1';
+    var body = document.getElementsByTagName('body')[0];
+    body.appendChild(div2)
+    console.log(document.getElementsByClassName('div1').length);   //2
+    console.log(ul.getElementsByClassName('li1'))
 
-    //document.location
-    //location对象是浏览器提供的原生对象(window.location也能获取到)，提供url相关的信息和操作方法
-    console.log(document.location)
+    //document.getElementsByName()
+    //返回一个类似数组的对象(NodeList实例)
+    //包含拥有相同name属性的HTML元素
+    //返回的结果是动态的
+    console.log(document.getElementsByName('x'))
 
-    //document.onxxxx
-    //事件监听
-    document.onclick = function(){console.log('click')}
+    //document.getElementsByTagName()
+    //返回一个类似数组的对象(HTMLCollection实例)
+    //包含拥有相同标签名的HTML元素
+    //返回的结果是动态的
+    //可以在任何元素节点上调用
+    console.log(document.getElementsByTagName('div'))
 
-    //document.readyState
-    //loading：加载HTML代码阶段(尚未完成解析)
-    //interactive：HTML文档解析完成，加载外部资源阶段
-    //complete：加载完成(图片、样式表、字体文件等外部资源)
-    setTimeout(function(){
-        if (document.readyState === 'complete') {
-        console.log('complete')
-    }
-    },1000)
-    if(document.readyState == 'loading'){console.log('loading')}
+    //document.hasFocus()
+    //返回一个布尔值，表示当前文档之中是否有元素被激活或获得焦点
+    console.log(document.hasFocus())
 
-    //document.referrer
-    //返回一个字符串，表示当前文档的访问者来自哪里
-    //如果是自己访问的，没有引见者，返回空字符串，后台设置拒绝返回信息，可以实现防盗链接
-    console.log(document.referrer)
+    //document.querySelector()
+    //参数：CSS选择器
+    //返回值：第一个匹配的元素节点
+    //注意：不支持CSS伪元素的选择器(::before)和CSS伪类的选择器(:hover)
+    //没有匹配的节点返回null
+    console.log(document.querySelector('.div1'))
 
-    //document.scrollingElement
-    //返回文档的滚动元素，当文档整体滚动时，到底是哪个元素在滚
-    document.scrollingElement.scrollTop = 0  //设置页面滚动到浏览器顶部
-
-    //document.scripts
-    //返回所有<script>节点
-    console.log(document.scripts)
-
-    //document.styleSheets
-    //返回文档内嵌或引入的样式表集合
-    console.log(document.styleSheets)
-
-    //document.title
-    //当前文档的标题
-    //该属性的值是可写的，一旦修改返回修改后的值
-    document.title = 'abc'
-    console.log(document.title)
-
-    //document.visibilityState
-    //当前页面是否可见(用户是不是在看当前页面)，如果用户没有在看当前页面，可以停掉一些页面功能
-    //visible：页面可见
-    //hidden：页面不可见
-    //prerender：页面正处于渲染状态
-    //unloaded：页面从内存里面卸载了
-    console.log(document.visibilityState)
+    //document.querySelectorAll()
+    //参数：CSS选择器
+    //返回值：NodeList对象
+    //注意：不支持CSS伪元素的选择器(::before)和CSS伪类的选择器(:hover)
+    //没有匹配的节点返回空数组
+    console.log(document.querySelectorAll('.div1'))
 </script>
 </html>
