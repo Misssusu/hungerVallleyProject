@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+</head>
+
+<body>
+    <ul>
+        <li id="item1">1</li>
+        <li id="item2">2</li>
+        <li id="item3">3</li>
+        <li id="item4">4</li>
+        <li id="item5">5</li>
+    </ul>
+</body>
+<script>
+    //需求：获取一个元素的兄弟姐妹元素
+    //1.获取到item3的父元素
+    //2.获取到父元素下面的所有子元素
+    //3.遍历子元素，将除去item3的元素放到一个伪数组里
+    Node.prototype.getSiblings = function() {
+        var allChildren = this.parentNode.children;
+        var arr = { length: 0 };
+        for (let i = 0; i < allChildren.length; i++) {
+            if (allChildren[i] !== this) {
+                arr[arr.length] = allChildren[i];
+                arr.length += 1;
+            }
+        }
+        return arr;
+    }
+    
+    console.log(item3.getSiblings());
+    //需求：给一个元素添加或移除多个class类名
+    //1.使用element.classList获取到元素的类名
+    //2.使用classList.add()添加类名
+    //3.使用classList.remove()移除类名
+    Node.prototype.addClass = function(classes) {
+        for (var key in classes) {
+            var value = classes[key];
+            var methodName = value ? 'add' : 'remove';
+            this.classList[methodName](key);
+        }
+    }
+    var classes = { 'a': true, 'b': true, 'c': false };
+    item3.addClass(classes);
+</script>
+
+</html>
