@@ -1,5 +1,5 @@
 var btns = $('.btn button');
-var images = $('.box img');
+var images = $('.box');
 var index;
 var p;
 //给按钮添加点击事件
@@ -15,22 +15,20 @@ for(let i = 0;i < btns.length; i++) {
     })
 }
 //实现自动播放
-var size = $(images).length;
+var size = btns.length;
 var n = 0;
-var timerId;
+var timerId = timerFun();
 function timerFun() {
-    timerId = setInterval(() => {
-        p = (n%size) * -400;
+    return setInterval(() => {
         btns.eq(n%size).trigger('click');
         n = n + 1;
-    },1000)
+    },2000)
 }
-timerFun()
 //当鼠标移入的时候暂停播放
 $('.box').on('mouseenter',() => {
     window.clearInterval(timerId)
 })
 //当鼠标移开的时候继续播放
 $('.box').on('mouseleave',() => {
-    timerFun()
+    timerId = timerFun()
 })
