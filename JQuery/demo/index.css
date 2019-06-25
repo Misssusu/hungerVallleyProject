@@ -14,7 +14,6 @@
     overflow: hidden;
     display: flex;
     margin: 0 auto;
-    border: 10px solid red;
 }
 .section .box {
     align-items: flex-start;
@@ -22,4 +21,7 @@
 .section .btn {
     margin-top: 20px;
     text-align: center;
+}
+button.active {
+    color: red;
 }
