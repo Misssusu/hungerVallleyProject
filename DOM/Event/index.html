@@ -6,37 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DOM Event</title>
 </head>
+<style>
+    div {
+        border: 1px solid black;
+        padding: 20px;
+    }
+    .grandpa {
+        margin-bottom: 20px;
+    }
+</style>
 <body>
-    <h1>DOM Level 2</h1>
-    <button id="btn1">onclick</button>
-    <button id="btn2">addEventListener</button>
-    <button id="btn3">removeEventListener</button>
+    <h1>事件模型</h1>
+    <div id="grandpa">
+        爷爷
+        <div id="father">
+            爸爸
+            <div id="son">儿子</div>
+        </div>
+    </div>
+    
+    <img src="./event.png" alt="">
 </body>
 <script>
-    //1.onclick与addEventListener的区别
-    //2.removeEventListener
+    //浏览器的事件模型就是通过监听函数(listener)对事件做出反应
+    //事件是先捕获后冒泡
 
-    function print1() {
-        console.log('1')
-    }
-    function print2() {
-        console.log('2')
-    }
-    btn1.onclick = print1;
-    btn1.onclick = print2;
-    //点击后打印出2
+    // son.addEventListener('click',() => {console.log('儿子')});
+    // father.addEventListener('click',() => {console.log('爸爸')});
+    // grandpa.addEventListener('click',() => {console.log('爷爷')});
+    //当点击儿子时，打印出儿子、爸爸、爷爷
+    //以上事件是在冒泡阶段触发的
 
-    btn2.addEventListener('click',print1);
-    btn2.addEventListener('click',print2);
-    //点击后打印出1，2
+    // son.addEventListener('click',() => {console.log('儿子')});
+    // father.addEventListener('click',() => {console.log('爸爸')},true);
+    // grandpa.addEventListener('click',() => {console.log('爷爷')});
+    //当点击儿子时，打印出爸爸、儿子、爷爷
+    //因为father的click事件是在捕获阶段触发的
 
-    //总结：
-    //1. btn1.onclick是一个属性(唯一的)
-    //2. addEventListener是一个队列(先进先出)
+    // son.addEventListener('click',() => {console.log('儿子冒泡')});
+    // son.addEventListener('click',() => {console.log('儿子捕获')},true);
+    //点击时打印出儿子冒泡、儿子捕获
 
-    btn3.addEventListener('click',print1);
-    btn3.addEventListener('click',print2);
-    btn3.removeEventListener('click',print1);
-    //点击后打印出2
+    son.addEventListener('click',() => {console.log('儿子捕获')},true);
+    son.addEventListener('click',() => {console.log('儿子冒泡')});
+    //点击时打印出儿子捕获、儿子冒泡
 </script>
 </html>
