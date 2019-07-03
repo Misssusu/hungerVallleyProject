@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .wrapper {
+            position: relative;
+        }
+        .popover {
+            border: 1px solid red;
+            padding: 10px;
+            display: none;
+            position: absolute;
+            left: 60px;
+            top: 0;
+        }
+        .popover::before{
+            position: absolute;
+            top: 5px;
+            right: 100%;
+            content: '';
+            border: 10px solid transparent;
+            border-right-color: red;
+        }
+        .popover::after {
+            position: absolute;
+            top: 5px;
+            right: 100%;
+            content: '';
+            border: 10px solid transparent;
+            border-right-color: white;
+            margin-right: -1px;
+        }
+        .popover.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="wrapper">
+        <button id="btn">点击</button>
+        <div class="popover" id="popover">浮层</div>
+    </div>
+</body>
+<script>
+    wrapper.onclick = function(event) {
+        event.stopPropagation()
+    }
+    btn.onclick = function(event) {
+        console.log('btn click')
+        popover.classList.add('active')
+    }
+    document.onclick = function() {
+        console.log('document click')
+        popover.classList.remove('active')
+    }
+</script>
+</html>
