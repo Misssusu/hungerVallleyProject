@@ -1,13 +1,27 @@
 let n;
 init();
-setInterval(() =>{
+let timer = setInterval(() =>{
     makeLeave(imgNode(n))
     .one('transitionend',(evt) => {
         makeEnter($(evt.currentTarget));
     })
     makeCurrent(imgNode(n+1));
     n+=1;
-},3000)
+},2000)
+document.addEventListener('visibilitychange',function(event){
+    if(document.hidden) {
+        window.clearInterval(timer)
+    }else {
+        timer = setInterval(() =>{
+            makeLeave(imgNode(n))
+            .one('transitionend',(evt) => {
+                makeEnter($(evt.currentTarget));
+            })
+            makeCurrent(imgNode(n+1));
+            n+=1;
+        },2000)
+    }
+})
 function imgNodeIndex(n) {
     if(n > 3) {
         n = n%3;
