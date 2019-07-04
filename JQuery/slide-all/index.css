@@ -36,3 +36,7 @@
     line-height: 25px;
     cursor: pointer;
 }
+.btns div.active {
+    color: black;
+    border-color: black;
+}
